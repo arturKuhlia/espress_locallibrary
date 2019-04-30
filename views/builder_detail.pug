@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+  h1 Client: #{builder.first_name} 
+  h1 Billing info:  #{builder.family_name}
+
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Contracts
+    
+    dl
+    each job in builder_jobs
+      dt 
+        a(href=job.url) #{job.title}
+      dd #{job.summary}
+
+    else
+      p This Client has no Contracts.
+      
+  hr
+  p
+    a(href=builder.url+'/delete') Delete Client Details
+  p
+    a(href=builder.url+'/update') Update Client Details

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+  h1 ID: #{jobinstance._id}
+  
+  p #[strong Title:] 
+    a(href=jobinstance.job.url) #{jobinstance.job.title}
+  p #[strong Imprint:] #{jobinstance.imprint}
+
+  p #[strong Status:] 
+    if jobinstance.status=='Available'
+      span.text-success #{jobinstance.status}
+    else if jobinstance.status=='Maintenance'
+      span.text-danger #{jobinstance.status}
+    else
+      span.text-warning #{jobinstance.status} 
+      
+  if jobinstance.status!='Available'
+    p #[strong Due back:] #{jobinstance.due_back_formatted}
+
+  hr
+  p
+    a(href=jobinstance.url+'/delete') Delete JobInstance
+  p
+    a(href=jobinstance.url+'/update') Update JobInstance

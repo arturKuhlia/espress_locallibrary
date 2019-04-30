@@ -1,0 +1,47 @@
+extends layout
+
+block content
+
+  h1 #{title}: #{job.title}
+  
+  p #[strong Builder:] 
+    a(href=job.builder.url) #{job.builder.name}
+  p #[strong Summary:] #{job.summary}
+  p #[strong ISBN:] #{job.isbn}
+  p #[strong Region:] 
+    each val in job.region
+      a(href=val.url) #{val.name}
+      |, 
+
+  hr
+  
+  if job_instances.length
+  
+    p #[strong Delete the following copies before attempting to delete this Job.]
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Copies
+    
+        each job_copy in job_instances
+          hr
+          if job_copy.status=='Available'
+            p.text-success #{job_copy.status}
+          else if job_copy.status=='Maintenance'
+            p.text-danger #{job_copy.status}
+          else
+            p.text-warning #{job_copy.status} 
+          p #[strong Imprint:] #{job_copy.imprint}
+          if job_copy.status!='Available'
+            p #[strong Due back:] #{job_copy.due_back}
+          p #[strong Id:] 
+            a(href=job_copy.url) #{job_copy._id}
+
+  else
+    p Do you really want to delete this Job?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=job._id )
+
+      button.btn.btn-primary(type='submit') Delete

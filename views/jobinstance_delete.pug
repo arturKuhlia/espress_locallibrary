@@ -1,0 +1,33 @@
+extends layout
+
+block content
+
+  h1= title
+  
+  p #[strong Do you really want to delete this JobInstance?]
+  
+  div(style="margin-left:20px")
+
+    p #[strong ID]: #{jobinstance._id}
+  
+    p #[strong Title:] 
+      a(href=jobinstance.job.url) #{jobinstance.job.title}
+    
+    p #[strong Imprint:] #{jobinstance.imprint}
+
+    p #[strong Status:] 
+      if jobinstance.status=='Available'
+        span.text-success #{jobinstance.status}
+      else if jobinstance.status=='Maintenance'
+        span.text-danger #{jobinstance.status}
+      else
+        span.text-warning #{jobinstance.status} 
+      
+    if jobinstance.status!='Available'
+      p #[strong Due back:] #{jobinstance.due_back_formatted}
+
+  form(method='POST' action='')
+    div.form-group
+      input#id.form-control(type='hidden',name='id', required='true', value=jobinstance._id )
+
+    button.btn.btn-primary(type='submit') Delete

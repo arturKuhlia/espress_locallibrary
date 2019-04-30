@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1="New Client Details"
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='first_name') Client name:
+      input#first_name.form-control(type='text',  name='first_name' required='true' value=(undefined===builder ? '' : builder.first_name) )
+      label(for='family_name') Billing Adress:
+      input#family_name.form-control(type='text',  name='family_name' required='true' value=(undefined===builder ? '' : builder.family_name))
+    div.form-group
+      label(for='discription') Discription:
+      textarea#discription( style= "height:100px; width:100%;" name='discription' value=(undefined===builder ? '' : builder.discription) )
+    
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

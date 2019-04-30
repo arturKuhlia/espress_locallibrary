@@ -1,0 +1,69 @@
+extends layout
+
+block content
+  h1 #{job.number}, #{job.title}
+  
+
+
+    style.
+      /* Set the size of the div element that contains the map */
+      #map {
+      height: 400px;  /* The height is 400 pixels */
+      width: 100%;  /* The width is the width of the web page */
+      }
+    h3 My Google Maps Demo
+    // The div element for the map
+    #map
+    script.
+      // Initialize and add the map
+      function initMap() {
+      // The location of Uluru
+      var uluru = {lat: 43.74, lng: -79.3};
+      // The map, centered at Uluru
+      var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+      // The marker, positioned at Uluru
+      var marker = new google.maps.Marker({position: uluru, map: map});
+      }
+    //
+      Load the API from the specified URL
+      * The async attribute allows the browser to render the page while the API loads
+      * The key parameter will contain your own API key (which is not needed for this tutorial)
+      * The callback parameter executes the initMap() function
+    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Jrp9PtHe0WapppUzxbIpMDWMAcV3qE4&callback=initMap')
+
+
+
+  p #[strong Builder:] 
+    a(href=job.builder.url) #{job.builder.name}
+  p #[strong Summary:] #{job.summary}
+  p #[strong Region:] 
+    each val in job.region
+      a(href=val.url) #{val.name}
+      |, 
+  
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Copies
+    
+    each val in job_instances
+      hr
+      if val.status=='Available'
+        p.text-success #{val.status}
+      else if val.status=='Maintenance'
+        p.text-danger #{val.status}
+      else
+        p.text-warning #{val.status} 
+      p #[strong Imprint:] #{val.imprint}
+      if val.status!='Available'
+        p #[strong Due back:] #{val.due_back}
+      p #[strong Id:] 
+        a(href=val.url) #{val._id}
+ 
+    else
+      p There are no copies of this job in the library.
+      
+  hr
+  p
+    a(href=job.url+'/delete') Delete Job
+  p
+    a(href=job.url+'/update') Update Job

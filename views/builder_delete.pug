@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+  h1 #{title}: #{builder.name}
+
+  
+  if builder_jobs.length
+  
+    p #[strong Delete the following jobs before attempting to delete this Client.]
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Jobs
+    
+      dl
+      each job in builder_jobs
+        dt 
+          a(href=job.url) #{job.title}
+        dd #{job.summary}
+
+  else
+    p Do you really want to delete this Client?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#builderid.form-control(type='hidden',name='builderid', required='true', value=builder._id )
+
+      button.btn.btn-primary(type='submit') Delete

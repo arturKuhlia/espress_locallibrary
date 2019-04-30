@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  h1= title
+    meta(charset='UTF-8')
+    title Example
+    script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Jrp9PtHe0WapppUzxbIpMDWMAcV3qE4')
+    script(src='https://unpkg.com/location-picker/dist/location-picker.min.js')
+    style(type='text/css').
+      #map {
+      width: 100%;
+      height: 480px;
+      }
+
+  form(method='POST' action='')
+   
+    div.form-group
+      label(for='number') Contract ID:
+      input#number.form-control(type='text', placeholder='60000' name='number' value=(undefined===job ? '' : job.number) required='true') 
+    
+    
+    div.form-group
+      label(for='title') Title:
+      input#title.form-control(type='text', placeholder='Name of job' name='title' required='true' value=(undefined===job ? '' : job.title) )
+    
+    
+    div.form-group
+      label(for='builder') Client:
+      select#builder.form-control(type='select', placeholder='Select builder' name='builder' required='true' )
+        for builder in builders
+          if job
+            option(value=builder._id selected=(builder._id.toString()==job.builder ? 'selected' : false) ) #{builder.name}
+          else
+            option(value=builder._id) #{builder.name}
+    div.form-group
+   
+    div.form-group
+      label(for='summary') Summary:
+      input#summary.form-control(type='textarea', placeholder='Summary' name='summary' value=(undefined===job ? '' : job.summary) required='true')
+    div.form-group
+      label Type:
+      div
+        for region in regions
+          div(style='display: inline; padding-right:10px;')
+            input.checkbox-input(type='checkbox', name='region', id=region._id, value=region._id, checked=region.checked )
+            label(for=region._id) #{region.name}
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

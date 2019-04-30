@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1 Region: #{region.name}
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Jobs
+    
+    dl
+    each job in region_jobs
+      dt 
+        a(href=job.url) #{job.title}
+      dd #{job.summary}
+
+    else
+      p This region has no jobs.
+      
+  hr
+  p
+    a(href=region.url+'/delete') Delete region
+  p
+    a(href=region.url+'/update') Update region

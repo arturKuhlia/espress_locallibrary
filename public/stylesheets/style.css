@@ -3,3 +3,91 @@
     padding: 0;
     list-style: none;
 }
+#googleMap {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  code {
+    background-color: #ddd;
+  }
+  .contentWrap {
+    padding: 2em;
+  }
+  .content {
+    width: 650px;
+    margin: 0 auto;
+    min-height: 1250px;
+    line-height: 1.5em;
+  }
+  h1 {
+    font-size: 2em;
+    line-height: 2em;
+  }
+  
+  .col-sm-2{
+    background-image: linear-gradient(to bottom right, rgb(188, 188, 208,1),rgba(221, 221, 248, 1), rgba(157, 157, 255, 0));
+    height:600px;
+
+  }
+  /*** Styles for the main header ***/
+      #main {
+        background-image: linear-gradient(160deg, rgb(188, 188, 208,1), rgb(188, 188, 208,1),rgba(139, 72, 194, 0.3), rgba(0,0,0,0));
+
+        position: relative;
+        z-index: 1001;
+      }
+    ul.nav {
+      padding-left: 0;
+    }
+      ul.nav {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      ul.nav li {
+        float: left;
+        list-style: none;
+        margin: .5em .5em .5em 0;
+        padding: .5em .5em .5em 0;
+        font-size: 1.5em;
+        
+      }
+      ul.nav li a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+      }
+      .sidebar-nav li a {
+        color: black;
+        font-size: 1em;
+        font: arial; 
+      }
+      .sidebar-nav li a:hover {
+        color: #E0461B;
+        transition: color 400ms ease-out;
+      }
+      ul.nav li a:hover {
+        color: #E0461B;
+        transition: color 400ms ease-out;
+      }
+      
+  /*** Styles for the sticky header ***/
+    #stickyContent {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: #E0461B;
+    }
+    #stickyContent ul.nav li {
+      font-size: 1em;
+    }
+    #stickyContent ul.nav a {
+      color: #612717;
+    }
+    #stickyContent ul.nav .text{
+      display: none;
+    }

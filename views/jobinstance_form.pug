@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1="Create Work Order"
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='job') Contract:
+      select#job.form-control(type='select', placeholder='Select job' name='job' required='true' )
+        for job in job_list
+          option(value=job._id, selected=(selected_job==job._id.toString() ? 'selected' : false) ) #{job.title}
+        
+    div.form-group
+      label(for='imprint') Work Order Details:
+      input#imprint.form-control(type='text-area', placeholder='' name='imprint' required='true' value=(undefined===jobinstance ? '' : jobinstance.imprint) )
+    div.form-group
+      label(for='due_back') Date of completion:
+      input#due_back.form-control(type='date', name='due_back' value=(undefined===jobinstance ? '' : jobinstance.due_back_yyyy_mm_dd))
+            
+    div.form-group
+      label(for='status') Status:
+      select#status.form-control(type='select', placeholder='Select status' name='status' required='true' )
+        option(value='On Hold' selected=(undefined===jobinstance || jobinstance.status!='Maintenance' ? false:'selected')) On Hold
+        option(value='Ready' selected=(undefined===jobinstance || jobinstance.status!='Available' ? false:'selected')) Ready
+        option(value='In Progress' selected=(undefined===jobinstance || jobinstance.status!='Loaned' ? false:'selected')) In Progress
+        option(value='Scheduled' selected=(undefined===jobinstance || jobinstance.status!='Reserved' ? false:'selected')) Scheduled
+
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

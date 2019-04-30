@@ -3,120 +3,139 @@ var router = express.Router();
 
 
 // Require our controllers.
-var book_controller = require('../controllers/bookController'); 
-var author_controller = require('../controllers/authorController');
-var genre_controller = require('../controllers/genreController');
-var book_instance_controller = require('../controllers/bookinstanceController');
+var job_controller = require('../controllers/jobController'); 
+var builder_controller = require('../controllers/builderController');
+var region_controller = require('../controllers/regionController');
+var job_instance_controller = require('../controllers/jobinstanceController');
 
 
-/// BOOK ROUTES ///
+/// job ROUTES ///
 
 // GET catalog home page.
-router.get('/', book_controller.index);  
+router.get('/', job_controller.index);  
 
-// GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
-router.get('/book/create', book_controller.book_create_get);
+router.get('/job/contract', job_controller.contract);  
 
-// POST request for creating Book.
-router.post('/book/create', book_controller.book_create_post);
-
-// GET request to delete Book.
-router.get('/book/:id/delete', book_controller.book_delete_get);
-
-// POST request to delete Book.
-router.post('/book/:id/delete', book_controller.book_delete_post);
-
-// GET request to update Book.
-router.get('/book/:id/update', book_controller.book_update_get);
-
-// POST request to update Book.
-router.post('/book/:id/update', book_controller.book_update_post);
-
-// GET request for one Book.
-router.get('/book/:id', book_controller.book_detail);
-
-// GET request for list of all Book.
-router.get('/books', book_controller.book_list);
-
-/// AUTHOR ROUTES ///
-
-// GET request for creating Author. NOTE This must come before route for id (i.e. display author).
-router.get('/author/create', author_controller.author_create_get);
-
-// POST request for creating Author.
-router.post('/author/create', author_controller.author_create_post);
-
-// GET request to delete Author.
-router.get('/author/:id/delete', author_controller.author_delete_get);
-
-// POST request to delete Author
-router.post('/author/:id/delete', author_controller.author_delete_post);
-
-// GET request to update Author.
-router.get('/author/:id/update', author_controller.author_update_get);
-
-// POST request to update Author.
-router.post('/author/:id/update', author_controller.author_update_post);
-
-// GET request for one Author.
-router.get('/author/:id', author_controller.author_detail);
-
-// GET request for list of all Authors.
-router.get('/authors', author_controller.author_list);
+// GET request for EXPeriment.
+router.get('/job/exp', job_controller.job_exp_get);
 
 
-/// GENRE ROUTES ///
+// GET request for EXPeriment.
+router.get('/job/exp', job_controller.job_exp_get);
 
-// GET request for creating a Genre. NOTE This must come before route that displays Genre (uses id).
-router.get('/genre/create', genre_controller.genre_create_get);
-
-// POST request for creating Genre.
-router.post('/genre/create', genre_controller.genre_create_post);
-
-// GET request to delete Genre.
-router.get('/genre/:id/delete', genre_controller.genre_delete_get);
-
-// POST request to delete Genre.
-router.post('/genre/:id/delete', genre_controller.genre_delete_post);
-
-// GET request to update Genre.
-router.get('/genre/:id/update', genre_controller.genre_update_get);
-
-// POST request to update Genre.
-router.post('/genre/:id/update', genre_controller.genre_update_post);
-
-// GET request for one Genre.
-router.get('/genre/:id', genre_controller.genre_detail);
-
-// GET request for list of all Genre.
-router.get('/genres', genre_controller.genre_list);
+// POST request for creating Job.
+router.post('/job/exp', job_controller.job_exp_post);
 
 
-/// BOOKINSTANCE ROUTES ///
 
-// GET request for creating a BookInstance. NOTE This must come before route that displays BookInstance (uses id).
-router.get('/bookinstance/create', book_instance_controller.bookinstance_create_get);
+// GET request for creating a Job. NOTE This must come before routes that display Job (uses id).
+router.get('/job/create', job_controller.job_create_get);
 
-// POST request for creating BookInstance.
-router.post('/bookinstance/create', book_instance_controller.bookinstance_create_post);
+// POST request for creating Job.
+router.post('/job/create', job_controller.job_create_post);
 
-// GET request to delete BookInstance.
-router.get('/bookinstance/:id/delete', book_instance_controller.bookinstance_delete_get);
+// GET request to delete Job.
+router.get('/job/:id/delete', job_controller.job_delete_get);
 
-// POST request to delete BookInstance.
-router.post('/bookinstance/:id/delete', book_instance_controller.bookinstance_delete_post);
+// POST request to delete Job.
+router.post('/job/:id/delete', job_controller.job_delete_post);
 
-// GET request to update BookInstance.
-router.get('/bookinstance/:id/update', book_instance_controller.bookinstance_update_get);
+// GET request to update Job.
+router.get('/job/:id/update', job_controller.job_update_get);
 
-// POST request to update BookInstance.
-router.post('/bookinstance/:id/update', book_instance_controller.bookinstance_update_post);
+// POST request to update Job.
+router.post('/job/:id/update', job_controller.job_update_post);
 
-// GET request for one BookInstance.
-router.get('/bookinstance/:id', book_instance_controller.bookinstance_detail);
+// GET request for one Job.
+router.get('/job/:id', job_controller.job_detail);
 
-// GET request for list of all BookInstance.
-router.get('/bookinstances', book_instance_controller.bookinstance_list);
+// GET request for list of all Job.
+router.get('/jobs', job_controller.job_list);
+
+/// builder ROUTES ///
+
+// GET request for creating Builder. NOTE This must come before route for id (i.e. display builder).
+router.get('/builder/create', builder_controller.builder_create_get);
+
+// POST request for creating Builder.
+router.post('/builder/create', builder_controller.builder_create_post);
+
+// GET request to delete Builder.
+router.get('/builder/:id/delete', builder_controller.builder_delete_get);
+
+// POST request to delete Builder
+router.post('/builder/:id/delete', builder_controller.builder_delete_post);
+
+// GET request to update Builder.
+router.get('/builder/:id/update', builder_controller.builder_update_get);
+
+// POST request to update Builder.
+router.post('/builder/:id/update', builder_controller.builder_update_post);
+
+// GET request for one Builder.
+router.get('/builder/:id', builder_controller.builder_detail);
+
+// GET request for list of all Builders.
+router.get('/builders', builder_controller.builder_list);
+
+
+/// region ROUTES ///
+
+// GET request for creating a Region. NOTE This must come before route that displays Region (uses id).
+router.get('/region/create', region_controller.region_create_get);
+
+// POST request for creating Region.
+router.post('/region/create', region_controller.region_create_post);
+
+// GET request to delete Region.
+router.get('/region/:id/delete', region_controller.region_delete_get);
+
+// POST request to delete Region.
+router.post('/region/:id/delete', region_controller.region_delete_post);
+
+// GET request to update Region.
+router.get('/region/:id/update', region_controller.region_update_get);
+
+// POST request to update Region.
+router.post('/region/:id/update', region_controller.region_update_post);
+
+// GET request for one Region.
+router.get('/region/:id', region_controller.region_detail);
+
+// GET request for list of all Region.
+router.get('/regions', region_controller.region_list);
+
+
+/// jobINSTANCE ROUTES ///
+
+// GET request for creating a JobInstance. NOTE This must come before route that displays JobInstance (uses id).
+router.get('/jobinstance/create', job_instance_controller.jobinstance_create_get);
+
+// POST request for creating JobInstance.
+router.post('/jobinstance/create', job_instance_controller.jobinstance_create_post);
+
+// GET request to delete JobInstance.
+router.get('/jobinstance/:id/delete', job_instance_controller.jobinstance_delete_get);
+
+// POST request to delete JobInstance.
+router.post('/jobinstance/:id/delete', job_instance_controller.jobinstance_delete_post);
+
+// GET request to update JobInstance.
+router.get('/jobinstance/:id/update', job_instance_controller.jobinstance_update_get);
+
+// POST request to update JobInstance.
+router.post('/jobinstance/:id/update', job_instance_controller.jobinstance_update_post);
+
+// GET request for one JobInstance.
+router.get('/jobinstance/:id', job_instance_controller.jobinstance_detail);
+
+// GET request for list of all JobInstance.
+router.get('/jobinstances', job_instance_controller.jobinstance_list);
+
+
+
+
+
 
 
 module.exports = router;

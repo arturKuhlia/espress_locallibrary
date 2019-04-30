@@ -1,6 +1,24 @@
 doctype html
 html(lang='en')
   head
+
+  header
+  #main
+    ul.nav
+              li 
+                img(src='/images/maxwell_logotop.gif') 
+              li 
+                a(href='/catalog') Home
+              li 
+                a(href='/catalog/jobs') All Contracts
+              li 
+                a(href='/catalog/builders') All Clients
+              li 
+                a(href='/catalog/regions') View Contracts by Type
+              li 
+                a(href='/catalog/jobinstances') View all Work Orders
+
+
     title= title
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -14,26 +32,21 @@ html(lang='en')
         div(class='col-sm-2')
           block sidebar
             ul(class='sidebar-nav')
-              li 
-                a(href='/catalog') Home
-              li 
-                a(href='/catalog/books') All books
-              li 
-                a(href='/catalog/authors') All authors
-              li 
-                a(href='/catalog/genres') All genres
-              li 
-                a(href='/catalog/bookinstances') All book-instances
+             
               li 
                 hr
               li 
-                a(href='/catalog/author/create') Create new author
+                a(href='/catalog/builder/create') Create new Client
               li 
-                a(href='/catalog/genre/create') Create new genre
+                a(href='/catalog/region/create') Create new Type
               li 
-                a(href='/catalog/book/create') Create new book
+                a(href='/catalog/job/create') Create new Contract
               li 
-                a(href='/catalog/bookinstance/create') Create new book instance (copy)
+                a(href='/catalog/jobinstance/create') Create new job Work Order
+              li 
+                a(href='/catalog/job/exp') Create new Contract (no Map) 
+              li 
+                a(href='/catalog/job/contract') Contract Detail form 
                 
         div(class='col-sm-10')
           block content
