@@ -94,7 +94,11 @@ html
       width: 100%;
       text-align: left;
       }
+      .logo {
+        position: center;
       }
+      }
+    img.logo(src='/images/maxwell_logotop.gif') 
   body
     #myTopnav.topnav
       a(href='/catalog') Home
@@ -106,7 +110,7 @@ html
       a(href='/catalog/jobinstances') View all Work Orders
       .dropdown
         button.dropbtn
-          | Dropdown 
+          | Creation Tools 
           i.fa.fa-caret-down
         .dropdown-content
           a(href='/catalog/builder/create') Create new Client
@@ -121,12 +125,10 @@ html
              
           a(href='/catalog/job/contract') Contract Detail form 
                 
-      a(href='#about') About
+      
       a.icon(href='javascript:void(0);', style='font-size:15px;', onclick='myFunction()') ☰
     div(style='padding-left:16px')
-      h2 Responsive Topnav with Dropdown
-      p Resize the browser window to see how it works.
-      p Hover over the dropdown button to open the dropdown menu.
+      title= title
     script.
       function myFunction() {
       var x = document.getElementById("myTopnav");
@@ -139,10 +141,6 @@ html
 
 
     block content
-
-
-
-
 
 
 
