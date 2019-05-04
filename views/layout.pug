@@ -4,9 +4,13 @@ html(lang='en')
 
   header
   #main
-    ul.nav
-              li 
-                img(src='/images/maxwell_logotop.gif') 
+  img(src='/images/maxwell_logotop.gif') 
+  br
+  div.dropdown
+    button.dropbtn View Database
+        
+            ul.dropdown-content
+            
               li 
                 a(href='/catalog') Home
               li 
@@ -17,7 +21,8 @@ html(lang='en')
                 a(href='/catalog/regions') View Contracts by Type
               li 
                 a(href='/catalog/jobinstances') View all Work Orders
-
+    
+                
 
     title= title
     meta(charset='utf-8')
